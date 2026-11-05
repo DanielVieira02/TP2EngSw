@@ -1,14 +1,6 @@
-import * as fs from 'node:fs';
+import CidadesBaseReport from './CidadesBaseReporter.js';
 
-export default class CidadesHTMLReport {
-
-  ler (caminho) {
-    this.cidades = fs.readFileSync(caminho);
-  }
-
-  parse () {
-    this.cidades = JSON.parse(this.cidades);
-  }
+export default class CidadesHTMLReport extends CidadesBaseReport {
 
   reportar() {
     let result = `
@@ -16,10 +8,10 @@ export default class CidadesHTMLReport {
   <html>
     <head>
       <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-      <title>Relatório de Nomes de Cidades</title>
+      <title>${this.title}</title>
     </head>
     <body>
-      <h1>Relatório de Nomes de Cidades</h1>
+      <h1>${this.title}</h1>
       <ul>
   `;
 

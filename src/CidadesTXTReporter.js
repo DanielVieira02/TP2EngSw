@@ -1,17 +1,9 @@
-import * as fs from 'node:fs';
+import CidadesBaseReport from './CidadesBaseReporter.js';
 
-export default class CidadesTXTReporter {
-
-  ler (caminho) {
-    this.cidades = fs.readFileSync(caminho);
-  }
-
-  parse () {
-    this.cidades = JSON.parse(this.cidades);
-  }
+export default class CidadesTXTReporter extends CidadesBaseReport {
 
   reportar() {
-    let result = `Relatório de Nomes de Cidades
+    let result = `${this.title}
 =============================`;
 
     for (let i = 0; i < this.cidades.length; i++) {
@@ -20,5 +12,6 @@ export default class CidadesTXTReporter {
 
     return result;
   }
+
 }
 
