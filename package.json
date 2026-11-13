@@ -9,5 +9,10 @@
     "start": "node index.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
 }
