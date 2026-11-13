@@ -1,7 +1,6 @@
-import CidadesBaseReport from './CidadesBaseReporter.js';
+import CidadesBaseReport from './CidadesBaseReporter.ts';
 
-export default class CidadesHTMLReport extends CidadesBaseReport {
-
+class CidadesHTMLReport extends CidadesBaseReport {
   reportar() {
     let result = `
   <!DOCTYPE HTML>
@@ -27,3 +26,5 @@ export default class CidadesHTMLReport extends CidadesBaseReport {
     return result;
   }
 }
+
+export default CidadesHTMLReport;

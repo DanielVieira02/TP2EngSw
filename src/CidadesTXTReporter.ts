@@ -1,10 +1,10 @@
-import CidadesBaseReport from './CidadesBaseReporter.js';
+import CidadesBaseReport from './CidadesBaseReporter.ts';
 
-export default class CidadesTXTReporter extends CidadesBaseReport {
+class CidadesTXTReporter extends CidadesBaseReport {
 
   reportar() {
     let result = `${this.title}
-=============================`;
+=============================\n`;
 
     for (let i = 0; i < this.cidades.length; i++) {
       result += '* ' + this.cidades[i]['Nome'] + '\n';
@@ -15,3 +15,4 @@ export default class CidadesTXTReporter extends CidadesBaseReport {
 
 }
 
+export default CidadesTXTReporter;
