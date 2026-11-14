@@ -1,0 +1,56 @@
+@startuml
+skinparam sequenceMessageAlign center
+hide footbox
+
+title Diagrama de Sequência - Código Original
+
+actor Usuario
+participant "index.js" as Index
+participant "<u> reporter: CidadesHTMLReporter </u>" as HTML
+participant "<u> reporter: CidadesTXTReporter </u>" as TXT
+
+Usuario -> Index: node index.js <format>
+activate Index
+Index -> Index: [cmd, filename, format] = process.argv
+
+alt format === 'html'
+  Index -> HTML ** : reporter = new CidadesHTMLReporter()
+
+  Index -> HTML : ler(caminho='./data/cidades-2.json')
+  activate HTML
+  deactivate HTML
+
+  Index -> HTML: parse()
+  activate HTML
+  deactivate HTML
+
+  Index -> HTML: html = reportar()
+  activate HTML
+  deactivate HTML
+
+  Index -> Index: console.log(html)
+  destroy HTML
+
+else format === 'txt'
+  Index -> TXT ** : reporter = new CidadesTXTReporter()
+
+  Index -> TXT : ler(caminho='./data/cidades-2.json')
+  activate TXT
+  deactivate TXT
+
+  Index -> TXT: parse()
+  activate TXT
+  deactivate TXT
+
+  Index -> TXT: html = reportar()
+  activate TXT
+  deactivate TXT
+
+  Index -> Index: console.log(html)
+  destroy TXT
+
+end
+
+deactivate Index
+
+@enduml

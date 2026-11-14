@@ -1,0 +1,20 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+title Diagrama de Classes - Código Original
+
+class CidadesHTMLReport {
+    + cidades: Buffer | Object[]
+    + ler(caminho: string): void
+    + parse(): void
+    + reportar(): string
+}
+
+class CidadesTXTReporter {
+    + cidades: Buffer | Object[]
+    + ler(caminho: string): void
+    + parse(): void
+    + reportar(): string
+}
+
+@enduml
