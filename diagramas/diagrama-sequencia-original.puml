@@ -2,14 +2,12 @@
 skinparam sequenceMessageAlign center
 hide footbox
 
-title Diagrama de Sequência - Código Original
-
 actor Usuario
 participant "index.js" as Index
 participant "<u> reporter: CidadesHTMLReporter </u>" as HTML
 participant "<u> reporter: CidadesTXTReporter </u>" as TXT
 
-Usuario -> Index: node index.js <format>
+Usuario -> Index: node index.js --format=<html|txt>
 activate Index
 Index -> Index: [cmd, filename, format] = process.argv
 

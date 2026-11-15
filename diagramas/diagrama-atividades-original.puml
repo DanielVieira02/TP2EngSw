@@ -1,19 +1,15 @@
 @startuml
 
-title Diagrama de Atividades - Código Original
+(*) -right-> "Ler os argumentos da\nlinha de comando"
 
-start
-
-:Ler os argumentos da\nlinha de comando;
-
-if (Formato suportado?) then (sim)
-  :Ler o arquivo\n'./data/cidades-2.json';
-  :Transformar o conteúdo em\numa lista JSON de cidades;
-  :Gerar o relatório no\nformato especificado;
-  :Imprimir o relatório no console;
-else (não)
+if "" then
+  -right-> [Formato suportado] "Ler o arquivo\n'./data/cidades-2.json'"
+  -right-> "Transformar o conteúdo em\numa lista JSON de cidades"
+  -down-> "Gerar o relatório no\nformato especificado"
+  -left-> "Imprimir o relatório no console"
+  -left-> (*)
+else
+  -down->[Formato não suportado] (*)
 endif
-
-stop
 
 @enduml
