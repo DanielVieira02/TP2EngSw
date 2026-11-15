@@ -1,33 +1,34 @@
-import { parseArgs } from "node:util";
+import yargs from "yargs";
+import { hideBin } from "yargs/helpers";
+import CitiesReporter from "@reporters/CitiesReporter";
+import CitiesReporterFactory from "@reporters/CitiesReporterFactory";
+import CitiesDataLoader from "@src/CitiesDataLoader";
 
-import CidadesHTMLReport from "./src/CidadesHTMLReporter.ts";
-import CidadesTXTReport from "./src/CidadesTXTReporter.ts";
-import CidadesJSONReport from "./src/CidadesJSONReporter.ts";
+function readCLIArgs(): { format: string; source: string } {
+  const { format, source } = yargs(hideBin(process.argv))
+    .option("format", {
+      type: "string",
+      demandOption: true,
+      description: "Report format",
+    })
+    .option("source", {
+      type: "string",
+      description: "Path to the data source file to load cities from",
+      default: "./data/cidades-2.json",
+    })
+    .help()
+    .parseSync();
 
-const { values } = parseArgs({
-  options: {
-    format: { type: "string" },
-    source: { type: "string" },
-  },
-});
-
-let reporter, report;
-
-switch (values.format) {
-  case "html":
-    reporter = new CidadesHTMLReport();
-    break;
-  case "txt":
-    reporter = new CidadesTXTReport();
-    break;
-  case "json":
-    reporter = new CidadesJSONReport();
-    break;
-  default:
-    throw new Error("[ERRO] Formato indisponível.");
+  return { format, source };
 }
 
-reporter.ler("./data/cidades-2.json");
-reporter.parse();
-report = reporter.reportar();
-console.log(report);
+function main() {
+  const { format, source } = readCLIArgs();
+
+  const cities = CitiesDataLoader.load(source);
+  const reporter: CitiesReporter = CitiesReporterFactory.create(format);
+
+  console.log(reporter.generateReport(cities));
+}
+
+main();

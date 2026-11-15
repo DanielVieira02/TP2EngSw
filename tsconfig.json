@@ -1,13 +1,16 @@
 {
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
+    "paths": {
+      "@src/*": ["./src/*"],
+      "@reporters/*": ["./src/reporters/*"]
+    },
     // File Layout
     // "rootDir": "./src",
     "outDir": "./dist",
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "nodenext",
     "target": "esnext",
     // For nodejs:
     "lib": ["esnext"],
@@ -40,6 +43,9 @@
     "skipLibCheck": true,
 
     "allowImportingTsExtensions": true,
-    "rewriteRelativeImportExtensions": true
+    "rewriteRelativeImportExtensions": true,
+
+    "module": "esnext",
+    "moduleResolution": "bundler"
   }
 }
