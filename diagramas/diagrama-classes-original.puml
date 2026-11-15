@@ -3,7 +3,7 @@ skinparam classAttributeIconSize 0
 
 title Diagrama de Classes - Código Original
 
-class CidadesHTMLReport {
+class CidadesHTMLReporter {
     + cidades: Buffer | Object[]
     + ler(caminho: string): void
     + parse(): void

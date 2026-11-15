@@ -8,7 +8,7 @@ start
 
 if (Formato suportado?) then (sim)
   :Ler o arquivo\n'./data/cidades-2.json';
-  :Transformar o conteúdo\nem uma lista de cidades;
+  :Transformar o conteúdo em\numa lista JSON de cidades;
   :Gerar o relatório no\nformato especificado;
   :Imprimir o relatório no console;
 else (não)
