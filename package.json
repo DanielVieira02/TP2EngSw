@@ -7,7 +7,8 @@
     "bundle": "esbuild index.ts --bundle --platform=node --format=esm --packages=external --outfile=index.js",
     "start": "node index.js",
     "clean": "rm -rf index.js dist",
-    "purge": "npm run clean && rm -rf reports"
+    "purge": "npm run clean && rm -rf reports",
+    "test": "vitest run"
   },
   "license": "ISC",
   "devDependencies": {
@@ -15,7 +16,11 @@
     "@types/yargs": "^17.0.35",
     "csv-parse": "^7.0.3",
     "esbuild": "^0.28.2",
-    "typescript": "^7.0.2",
+    "typescript": "^6.0.3",
     "yargs": "^17.7.2"
+  },
+  "dependencies": {
+    "@jest/globals": "^30.5.2",
+    "vitest": "^5.1.1"
   }
 }
